@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">RandomFriend</string>
+    <string name="people">Люди</string>
+    <string name="favorite">Друзья</string>
+    <string name="location">"Местоположение: "</string>
+    <string name="phone">"Телефон: "</string>
+</resources>
