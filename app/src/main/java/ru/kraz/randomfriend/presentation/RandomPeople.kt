@@ -5,6 +5,7 @@ import android.net.Uri
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -60,6 +61,8 @@ fun RandomPeople(
     var isLoadingImage by remember { mutableStateOf(true) }
 
     val context = LocalContext.current
+
+    val interactionSource = remember { MutableInteractionSource() }
 
     LaunchedEffect(Unit) {
         randomPeopleViewModel.fetchPeople()
@@ -139,7 +142,10 @@ fun RandomPeople(
                                     modifier = Modifier
                                         .wrapContentSize()
                                         .padding(horizontal = 10.dp)
-                                        .clickable {
+                                        .clickable(
+                                            interactionSource = interactionSource,
+                                            indication = null
+                                        ) {
                                             randomPeopleViewModel.addAsFriend(index)
                                         },
                                     imageVector = if (it.isFavorite) Icons.Filled.Favorite else Icons.Filled.FavoriteBorder,
@@ -175,7 +181,10 @@ fun RandomPeople(
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .padding(start = 8.dp, top = 2.dp)
-                                .clickable {
+                                .clickable(
+                                    interactionSource = interactionSource,
+                                    indication = null
+                                ) {
                                     context.startActivity(
                                         Intent(
                                             Intent.ACTION_VIEW,
