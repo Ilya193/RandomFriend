@@ -16,16 +16,11 @@ class RandomPeopleViewModel(
     private val resourceProvider: ResourceProvider
 ) : ViewModel() {
 
-    init {
-        println("s149 init RandomPeopleViewModel")
-    }
-
     private var people = mutableListOf<RandomPersonUi>()
     private val _uiState = MutableStateFlow(RandomPeopleUiState(isLoading = true))
     val uiState: StateFlow<RandomPeopleUiState> get() = _uiState
 
     fun fetchPeople() = viewModelScope.launch(Dispatchers.IO) {
-        println("s149 fetchPeople")
         _uiState.value = RandomPeopleUiState(items = emptyList(), msg = null, isLoading = true)
         when (val result = fetchPeopleUseCase()) {
             is ResultFDS.Success -> {
