@@ -1,4 +1,4 @@
-package ru.kraz.randomfriend.presentation
+package ru.kraz.randomfriend.presentation.people
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding

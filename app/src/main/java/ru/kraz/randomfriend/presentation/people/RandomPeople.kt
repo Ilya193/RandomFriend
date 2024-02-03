@@ -1,4 +1,4 @@
-package ru.kraz.randomfriend.presentation
+package ru.kraz.randomfriend.presentation.people
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -13,6 +13,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 import org.koin.androidx.compose.koinViewModel
+import ru.kraz.randomfriend.presentation.ErrorResult
 
 @Composable
 fun RandomPeople(

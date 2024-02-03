@@ -2,8 +2,8 @@ package ru.kraz.randomfriend.di
 
 import org.koin.dsl.module
 import ru.kraz.randomfriend.data.ToRandomPeopleDataMapper
-import ru.kraz.randomfriend.presentation.ToFriendUiMapper
-import ru.kraz.randomfriend.presentation.ToRandomPeopleUiMapper
+import ru.kraz.randomfriend.presentation.friend.ToFriendUiMapper
+import ru.kraz.randomfriend.presentation.people.ToRandomPeopleUiMapper
 
 val mappersModule = module {
     factory<ToRandomPeopleUiMapper> {

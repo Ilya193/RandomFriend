@@ -1,4 +1,4 @@
-package ru.kraz.randomfriend.presentation
+package ru.kraz.randomfriend.presentation.friend
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

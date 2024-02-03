@@ -1,4 +1,4 @@
-package ru.kraz.randomfriend.presentation
+package ru.kraz.randomfriend.presentation.friend
 
 import android.content.Context
 import androidx.compose.foundation.layout.Box
@@ -15,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavController
 import org.koin.androidx.compose.koinViewModel
+import ru.kraz.randomfriend.presentation.ErrorResult
 
 @Composable
 fun FavoriteFriends(
@@ -49,7 +50,7 @@ fun FavoriteFriends(
     LazyColumn {
         if (friendsState.friends.isNotEmpty()) {
             itemsIndexed(friendsState.friends) { index, it ->
-                Friend(it, index)
+                Friend(navController, it, index)
             }
         }
     }

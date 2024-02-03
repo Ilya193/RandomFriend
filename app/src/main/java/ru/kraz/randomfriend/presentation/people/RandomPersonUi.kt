@@ -1,8 +1,8 @@
-package ru.kraz.randomfriend.presentation
+package ru.kraz.randomfriend.presentation.people
 
 import ru.kraz.randomfriend.domain.RandomPersonDomain
 
-data class FriendUi(
+data class RandomPersonUi(
     val id: String,
     val name: String,
     val phone: String,
@@ -28,9 +28,8 @@ data class FriendUi(
         )
 }
 
-data class FriendUiState(
-    val friends: List<FriendUi> = emptyList(),
-    val isEmpty: Boolean = false,
+data class RandomPeopleUiState(
+    val items: List<RandomPersonUi> = emptyList(),
     val msg: Int? = null,
     val isLoading: Boolean = false
 )

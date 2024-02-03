@@ -1,4 +1,4 @@
-package ru.kraz.randomfriend.presentation
+package ru.kraz.randomfriend.presentation.people
 
 import android.content.Context
 import android.content.Intent

@@ -1,4 +1,4 @@
-package ru.kraz.randomfriend.presentation
+package ru.kraz.randomfriend.presentation.friend
 
 import android.content.Context
 import android.content.Intent
@@ -44,12 +44,16 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import org.koin.androidx.compose.koinViewModel
 import ru.kraz.randomfriend.R
+import ru.kraz.randomfriend.presentation.Screen
+import ru.kraz.randomfriend.presentation.people.TextLocation
 
 @Composable
 fun Friend(
+    navController: NavController,
     it: FriendUi,
     index: Int,
     friendsViewModel: FriendsViewModel = koinViewModel()
@@ -115,7 +119,11 @@ fun Friend(
                     Image(
                         modifier = Modifier
                             .wrapContentSize()
-                            .padding(horizontal = 10.dp),
+                            .padding(horizontal = 10.dp)
+                            .clickable(
+                                interactionSource = interactionSource,
+                                indication = null
+                            ) { navController.navigate(Screen.Chat.route+"/${it.id}") },
                         imageVector = Icons.AutoMirrored.Filled.Send,
                         contentDescription = null
                     )
@@ -127,7 +135,8 @@ fun Friend(
                                 interactionSource = interactionSource,
                                 indication = null
                             ) {
-                                val sharedPreferences = context.getSharedPreferences("settings", Context.MODE_PRIVATE)
+                                val sharedPreferences =
+                                    context.getSharedPreferences("settings", Context.MODE_PRIVATE)
                                 val uuid = sharedPreferences.getString("UUID", "") ?: ""
                                 friendsViewModel.addAsFriend(index, uuid)
                             },

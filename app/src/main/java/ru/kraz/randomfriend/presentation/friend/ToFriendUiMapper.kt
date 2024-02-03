@@ -1,4 +1,4 @@
-package ru.kraz.randomfriend.presentation
+package ru.kraz.randomfriend.presentation.friend
 
 import ru.kraz.randomfriend.domain.RandomPersonDomain
 import ru.kraz.randomfriend.domain.ToMapper

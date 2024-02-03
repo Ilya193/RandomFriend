@@ -24,6 +24,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
+import ru.kraz.randomfriend.presentation.chat.Chat
+import ru.kraz.randomfriend.presentation.friend.FavoriteFriends
+import ru.kraz.randomfriend.presentation.people.RandomPeople
 import ru.kraz.randomfriend.ui.theme.RandomFriendTheme
 import java.util.UUID
 
@@ -74,14 +78,17 @@ class MainActivity : ComponentActivity() {
                     ) { innerPadding ->
                         NavHost(
                             navController,
-                            startDestination = Screen.RandomPeople.route,
+                            startDestination = MainScreen.RandomPeople.route,
                             Modifier.padding(innerPadding)
                         ) {
-                            composable(Screen.RandomPeople.route) {
+                            composable(MainScreen.RandomPeople.route) {
                                 RandomPeople(navController)
                             }
-                            composable(Screen.FavoriteFriends.route) {
+                            composable(MainScreen.FavoriteFriends.route) {
                                 FavoriteFriends(navController)
+                            }
+                            composable(Screen.Chat.route+"/{friendId}") {
+                                Chat(navController, it.arguments?.getString("friendId"))
                             }
                         }
                     }
@@ -91,7 +98,7 @@ class MainActivity : ComponentActivity() {
     }
 
     private val screens = listOf(
-        Screen.RandomPeople,
-        Screen.FavoriteFriends,
+        MainScreen.RandomPeople,
+        MainScreen.FavoriteFriends,
     )
 }
