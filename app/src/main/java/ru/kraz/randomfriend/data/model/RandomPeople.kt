@@ -1,13 +1,13 @@
 package ru.kraz.randomfriend.data.model
 
-import ru.kraz.randomfriend.data.RandomPeopleData
+import ru.kraz.randomfriend.data.RandomPersonData
 
 data class RandomPeople(
     val info: Info,
     val results: List<Result>
 ) {
-    fun map(): List<RandomPeopleData> = results.map {
-        RandomPeopleData(
+    fun map(): List<RandomPersonData> = results.map {
+        RandomPersonData(
             id = it.login.uuid,
             name = it.name.title + " " + it.name.first + " " + it.name.last,
             phone = it.phone,

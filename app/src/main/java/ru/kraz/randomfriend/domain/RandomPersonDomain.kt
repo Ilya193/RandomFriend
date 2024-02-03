@@ -1,6 +1,6 @@
 package ru.kraz.randomfriend.domain
 
-data class RandomPeopleDomain(
+data class RandomPersonDomain(
     val id: String,
     val name: String,
     val phone: String,

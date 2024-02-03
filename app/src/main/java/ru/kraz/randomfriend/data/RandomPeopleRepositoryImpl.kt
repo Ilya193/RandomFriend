@@ -2,7 +2,7 @@ package ru.kraz.randomfriend.data
 
 import retrofit2.HttpException
 import ru.kraz.randomfriend.domain.ErrorType
-import ru.kraz.randomfriend.domain.RandomPeopleDomain
+import ru.kraz.randomfriend.domain.RandomPersonDomain
 import ru.kraz.randomfriend.domain.RandomPeopleRepository
 import ru.kraz.randomfriend.domain.ResultFDS
 import java.net.UnknownHostException
@@ -10,7 +10,7 @@ import java.net.UnknownHostException
 class RandomPeopleRepositoryImpl(
     private val service: PeopleService
 ) : RandomPeopleRepository {
-    override suspend fun fetchPeople(): ResultFDS<List<RandomPeopleDomain>> {
+    override suspend fun fetchPeople(): ResultFDS<List<RandomPersonDomain>> {
         return try {
             val peopleCloud = service.fetchRandomPeople()
             ResultFDS.Success(peopleCloud.map().map { it.map() })

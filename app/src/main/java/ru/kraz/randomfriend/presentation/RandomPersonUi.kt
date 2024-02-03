@@ -1,6 +1,6 @@
 package ru.kraz.randomfriend.presentation
 
-data class RandomPeopleUi(
+data class RandomPersonUi(
     val id: String,
     val name: String,
     val phone: String,
@@ -14,7 +14,7 @@ data class RandomPeopleUi(
 )
 
 data class RandomPeopleUiState(
-    val items: List<RandomPeopleUi> = emptyList(),
+    val items: List<RandomPersonUi> = emptyList(),
     val msg: Int? = null,
     val isLoading: Boolean = false
 )

@@ -1,8 +1,8 @@
 package ru.kraz.randomfriend.data
 
-import ru.kraz.randomfriend.domain.RandomPeopleDomain
+import ru.kraz.randomfriend.domain.RandomPersonDomain
 
-data class RandomPeopleData(
+data class RandomPersonData(
     val id: String,
     val name: String,
     val phone: String,
@@ -13,8 +13,8 @@ data class RandomPeopleData(
     val longitude: String,
     val picture: String,
 ) {
-    fun map(): RandomPeopleDomain =
-        RandomPeopleDomain(
+    fun map(): RandomPersonDomain =
+        RandomPersonDomain(
             id = id,
             name = name,
             phone = phone,

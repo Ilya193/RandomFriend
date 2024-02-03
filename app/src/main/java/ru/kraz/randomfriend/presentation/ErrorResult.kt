@@ -10,6 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import ru.kraz.randomfriend.R
 
 @Composable
@@ -32,4 +33,10 @@ fun ErrorResult(
             }
         }
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun PreviewErrorResult() {
+    ErrorResult(message = R.string.no_connection) {}
 }
