@@ -14,7 +14,9 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.NavHost
@@ -35,16 +37,24 @@ class MainActivity : ComponentActivity() {
                     val navController = rememberNavController()
                     Scaffold(
                         bottomBar = {
-                            BottomNavigation {
+                            BottomNavigation(
+                                backgroundColor = Color.Blue
+                            ) {
                                 val navBackStackEntry by navController.currentBackStackEntryAsState()
                                 val currentDestination = navBackStackEntry?.destination
                                 screens.forEach { screen ->
                                     BottomNavigationItem(
                                         icon = { Icon(screen.icon, contentDescription = null) },
-                                        label = { Text(text = stringResource(id = screen.resourceId)) },
+                                        label = {
+                                            Text(
+                                                text = stringResource(id = screen.resourceId),
+                                                style = TextStyle(color = Color.White)
+                                            )
+                                        },
                                         selected = currentDestination?.hierarchy?.any { it.route == screen.route } == true,
                                         onClick = {
                                             if (currentDestination?.route != screen.route) {
+                                                navController.popBackStack()
                                                 navController.navigate(screen.route) {
                                                     popUpTo(navController.graph.findStartDestination().id) {
                                                         inclusive = true

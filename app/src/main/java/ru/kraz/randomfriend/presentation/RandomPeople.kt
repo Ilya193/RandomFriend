@@ -58,8 +58,6 @@ fun RandomPeople(
 ) {
     val people by randomPeopleViewModel.uiState.collectAsState()
 
-    var isLoadingImage by remember { mutableStateOf(true) }
-
     val context = LocalContext.current
 
     val interactionSource = remember { MutableInteractionSource() }
@@ -100,6 +98,7 @@ fun RandomPeople(
                             modifier = Modifier
                                 .fillMaxWidth(0.4f)
                         ) {
+                            var isLoadingImage by remember { mutableStateOf(true) }
                             AsyncImage(
                                 modifier = Modifier
                                     .fillMaxWidth()
