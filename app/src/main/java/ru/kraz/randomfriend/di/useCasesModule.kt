@@ -2,6 +2,7 @@ package ru.kraz.randomfriend.di
 
 import org.koin.dsl.module
 import ru.kraz.randomfriend.domain.AddOrRemoveFriendUseCase
+import ru.kraz.randomfriend.domain.FetchFriendsUseCase
 import ru.kraz.randomfriend.domain.FetchPeopleUseCase
 
 val useCasesModule = module {
@@ -11,5 +12,9 @@ val useCasesModule = module {
 
     factory<AddOrRemoveFriendUseCase> {
         AddOrRemoveFriendUseCase(get())
+    }
+
+    factory<FetchFriendsUseCase> {
+        FetchFriendsUseCase(get())
     }
 }

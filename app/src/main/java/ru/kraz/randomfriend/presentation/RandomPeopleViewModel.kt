@@ -2,12 +2,10 @@ package ru.kraz.randomfriend.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.google.firebase.database.FirebaseDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.tasks.await
 import ru.kraz.randomfriend.domain.AddOrRemoveFriendUseCase
 import ru.kraz.randomfriend.domain.FetchPeopleUseCase
 import ru.kraz.randomfriend.domain.ResourceProvider
