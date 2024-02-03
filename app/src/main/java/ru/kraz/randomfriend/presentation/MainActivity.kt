@@ -1,5 +1,6 @@
 package ru.kraz.randomfriend.presentation
 
+import android.content.Context
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -24,10 +25,14 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import ru.kraz.randomfriend.ui.theme.RandomFriendTheme
+import java.util.UUID
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val sharedPreferences = getSharedPreferences("settings", Context.MODE_PRIVATE)
+        val id = sharedPreferences.getString("UUID", "")
+        if (id == "" || id == null) sharedPreferences.edit().putString("UUID", UUID.randomUUID().toString()).apply()
         setContent {
             RandomFriendTheme {
                 Surface(

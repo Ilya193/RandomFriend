@@ -13,7 +13,7 @@ class RandomPeopleRepositoryImpl(
     override suspend fun fetchPeople(): ResultFDS<List<RandomPersonDomain>> {
         return try {
             val peopleCloud = service.fetchRandomPeople()
-            ResultFDS.Success(peopleCloud.map().map { it.map() })
+            ResultFDS.Success(peopleCloud.map().map { it.toRandomPersonDomain() })
         } catch (e: UnknownHostException) {
             ResultFDS.Error(ErrorType.NO_CONNECTION)
         } catch (e: HttpException) {

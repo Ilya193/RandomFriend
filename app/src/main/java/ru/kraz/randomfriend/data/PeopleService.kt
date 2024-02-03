@@ -1,7 +1,7 @@
 package ru.kraz.randomfriend.data
 
 import retrofit2.http.GET
-import ru.kraz.randomfriend.data.model.RandomPeople
+import ru.kraz.randomfriend.data.model.people.RandomPeople
 
 interface PeopleService {
 

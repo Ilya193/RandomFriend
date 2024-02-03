@@ -1,5 +1,6 @@
 package ru.kraz.randomfriend.presentation
 
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import androidx.compose.foundation.BorderStroke
@@ -126,7 +127,9 @@ fun RandomPerson(
                                 interactionSource = interactionSource,
                                 indication = null
                             ) {
-                                randomPeopleViewModel.addAsFriend(index)
+                                val sharedPreferences = context.getSharedPreferences("settings", Context.MODE_PRIVATE)
+                                val uuid = sharedPreferences.getString("UUID", "") ?: ""
+                                randomPeopleViewModel.addAsFriend(index, uuid)
                             },
                         imageVector = if (it.isFavorite) Icons.Filled.Favorite else Icons.Filled.FavoriteBorder,
                         contentDescription = null

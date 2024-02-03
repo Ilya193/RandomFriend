@@ -1,4 +1,4 @@
-package ru.kraz.randomfriend.data.model
+package ru.kraz.randomfriend.data.model.people
 
 data class Dob(
     val age: Int,

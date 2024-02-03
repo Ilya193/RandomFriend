@@ -1,9 +1,9 @@
 package ru.kraz.randomfriend.presentation
 
 import ru.kraz.randomfriend.domain.RandomPersonDomain
-import ru.kraz.randomfriend.domain.ToUiMapper
+import ru.kraz.randomfriend.domain.ToMapper
 
-class ToRandomPeopleUiMapper : ToUiMapper<List<RandomPersonDomain>, List<RandomPersonUi>> {
+class ToRandomPeopleUiMapper : ToMapper<List<RandomPersonDomain>, List<RandomPersonUi>> {
     override fun map(data: List<RandomPersonDomain>): List<RandomPersonUi> =
         data.map {
             RandomPersonUi(

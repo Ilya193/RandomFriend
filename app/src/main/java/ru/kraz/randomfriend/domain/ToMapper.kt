@@ -1,5 +1,5 @@
 package ru.kraz.randomfriend.domain
 
-interface ToUiMapper<T, R> {
+interface ToMapper<T, R> {
     fun map(data: T): R
 }

@@ -1,4 +1,4 @@
-package ru.kraz.randomfriend.data.model
+package ru.kraz.randomfriend.data.model.people
 
 data class Info(
     val page: Int,

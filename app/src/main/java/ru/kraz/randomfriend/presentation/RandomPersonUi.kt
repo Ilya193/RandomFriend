@@ -1,5 +1,7 @@
 package ru.kraz.randomfriend.presentation
 
+import ru.kraz.randomfriend.domain.RandomPersonDomain
+
 data class RandomPersonUi(
     val id: String,
     val name: String,
@@ -11,7 +13,20 @@ data class RandomPersonUi(
     val longitude: String,
     val picture: String,
     val isFavorite: Boolean = false
-)
+) {
+    fun map(): RandomPersonDomain =
+        RandomPersonDomain(
+            id = id,
+            name = name,
+            phone = phone,
+            country = country,
+            state = state,
+            city = city,
+            latitude = latitude,
+            longitude = longitude,
+            picture = picture
+        )
+}
 
 data class RandomPeopleUiState(
     val items: List<RandomPersonUi> = emptyList(),
