@@ -1,4 +1,4 @@
-package ru.kraz.randomfriend
+package ru.kraz.randomfriend.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

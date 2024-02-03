@@ -1,4 +1,4 @@
-package ru.kraz.randomfriend.data
+package ru.kraz.randomfriend.data.model
 
 data class Timezone(
     val description: String,

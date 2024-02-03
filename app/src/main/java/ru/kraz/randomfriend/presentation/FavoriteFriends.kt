@@ -1,4 +1,4 @@
-package ru.kraz.randomfriend
+package ru.kraz.randomfriend.presentation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
