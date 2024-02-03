@@ -13,7 +13,7 @@ data class RandomPeople(
             phone = it.phone,
             country = it.location.country,
             state = it.location.state,
-            city = it.location.state,
+            city = it.location.city,
             latitude = it.location.coordinates.latitude,
             longitude = it.location.coordinates.longitude,
             picture = it.picture.large
