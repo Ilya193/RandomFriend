@@ -1,12 +1,13 @@
-package ru.kraz.randomfriend.presentation.people
+package ru.kraz.randomfriend.presentation.friends
 
 import ru.kraz.randomfriend.domain.people.RandomPersonDomain
 import ru.kraz.randomfriend.domain.common.ToMapper
+import ru.kraz.randomfriend.domain.friends.FriendDomain
 
-class ToRandomPeopleUiMapper : ToMapper<List<RandomPersonDomain>, List<RandomPersonUi>> {
-    override fun map(data: List<RandomPersonDomain>): List<RandomPersonUi> =
+class ToFriendUiMapper : ToMapper<List<FriendDomain>, List<FriendUi>> {
+    override fun map(data: List<FriendDomain>): List<FriendUi> =
         data.map {
-            RandomPersonUi(
+            FriendUi(
                 id = it.id,
                 name = it.name,
                 phone = it.phone,
@@ -15,7 +16,8 @@ class ToRandomPeopleUiMapper : ToMapper<List<RandomPersonDomain>, List<RandomPer
                 city = it.city,
                 latitude = it.latitude,
                 longitude = it.longitude,
-                picture = it.picture
+                picture = it.picture,
+                isFavorite = true
             )
         }
 }

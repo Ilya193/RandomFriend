@@ -1,6 +1,6 @@
 package ru.kraz.randomfriend.data.model.people
 
-import ru.kraz.randomfriend.data.RandomPersonData
+import ru.kraz.randomfriend.data.people.RandomPersonData
 
 data class RandomPeople(
     val info: Info,

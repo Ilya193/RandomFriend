@@ -6,10 +6,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
-import ru.kraz.randomfriend.domain.AddOrRemoveFriendUseCase
-import ru.kraz.randomfriend.domain.FetchPeopleUseCase
-import ru.kraz.randomfriend.domain.ResourceProvider
-import ru.kraz.randomfriend.domain.ResultFDS
+import ru.kraz.randomfriend.domain.common.AddOrRemoveFriendUseCase
+import ru.kraz.randomfriend.domain.people.FetchPeopleUseCase
+import ru.kraz.randomfriend.domain.common.ResourceProvider
+import ru.kraz.randomfriend.domain.common.ResultFDS
 
 class RandomPeopleViewModel(
     private val fetchPeopleUseCase: FetchPeopleUseCase,

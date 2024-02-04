@@ -1,5 +1,6 @@
-package ru.kraz.randomfriend.presentation.people
+package ru.kraz.randomfriend.presentation.friends
 
+import android.content.Context
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
@@ -11,36 +12,45 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavController
 import org.koin.androidx.compose.koinViewModel
 import ru.kraz.randomfriend.presentation.common.ErrorResult
 
 @Composable
-fun RandomPeople(
+fun FavoriteFriends(
     navController: NavController, modifier: Modifier = Modifier,
-    randomPeopleViewModel: RandomPeopleViewModel = koinViewModel()
+    friendsViewModel: FriendsViewModel = koinViewModel()
 ) {
-    val people by randomPeopleViewModel.uiState.collectAsState()
+    val friendsState by friendsViewModel.uiState.collectAsState()
+
+    val context = LocalContext.current
 
     LaunchedEffect(Unit) {
-        randomPeopleViewModel.fetchPeople()
+        val id = context.getSharedPreferences("settings", Context.MODE_PRIVATE)
+            .getString("UUID", "") ?: ""
+        friendsViewModel.fetchFriends(id)
     }
 
-    people.msg?.let {
+    friendsState.msg?.let {
         ErrorResult(message = it) {
-            randomPeopleViewModel.fetchPeople()
+            val id = context.getSharedPreferences("settings", Context.MODE_PRIVATE)
+                .getString("UUID", "") ?: ""
+            friendsViewModel.fetchFriends(id)
         }
     }
 
-    if (people.isLoading) Box(
+    if (friendsState.isEmpty) NoFriendsAdded()
+
+    if (friendsState.isLoading) Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
     ) { CircularProgressIndicator() }
 
     LazyColumn {
-        if (people.items.isNotEmpty()) {
-            itemsIndexed(people.items) { index, it ->
-                RandomPerson(it, index)
+        if (friendsState.friends.isNotEmpty()) {
+            itemsIndexed(friendsState.friends) { index, it ->
+                Friend(navController, it, index)
             }
         }
     }

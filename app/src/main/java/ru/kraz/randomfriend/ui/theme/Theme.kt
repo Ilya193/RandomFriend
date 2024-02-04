@@ -21,7 +21,6 @@ private val DarkColorScheme = darkColorScheme(
     primary = Color.Blue,
     secondary = PurpleGrey80,
     tertiary = Pink80,
-    background = Color.Black
 )
 
 private val LightColorScheme = lightColorScheme(

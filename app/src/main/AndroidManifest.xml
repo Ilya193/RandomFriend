@@ -16,10 +16,11 @@
         android:theme="@style/Theme.RandomFriend"
         tools:targetApi="31">
         <activity
-            android:name=".presentation.MainActivity"
+            android:name=".presentation.common.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/Theme.RandomFriend">
+            android:theme="@style/Theme.RandomFriend"
+            android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -1,8 +1,9 @@
-package ru.kraz.randomfriend.presentation.people
+package ru.kraz.randomfriend.data.people
 
+import ru.kraz.randomfriend.data.model.friends.FriendCloud
 import ru.kraz.randomfriend.domain.people.RandomPersonDomain
 
-data class RandomPersonUi(
+data class RandomPersonData(
     val id: String,
     val name: String,
     val phone: String,
@@ -12,9 +13,8 @@ data class RandomPersonUi(
     val latitude: String,
     val longitude: String,
     val picture: String,
-    val isFavorite: Boolean = false
 ) {
-    fun map(): RandomPersonDomain =
+    fun toRandomPersonDomain(): RandomPersonDomain =
         RandomPersonDomain(
             id = id,
             name = name,
@@ -26,10 +26,17 @@ data class RandomPersonUi(
             longitude = longitude,
             picture = picture
         )
-}
 
-data class RandomPeopleUiState(
-    val items: List<RandomPersonUi> = emptyList(),
-    val msg: Int? = null,
-    val isLoading: Boolean = false
-)
+    fun toFriendCloud(): FriendCloud =
+        FriendCloud(
+            id = id,
+            name = name,
+            phone = phone,
+            country = country,
+            state = state,
+            city = city,
+            latitude = latitude,
+            longitude = longitude,
+            picture = picture
+        )
+}
