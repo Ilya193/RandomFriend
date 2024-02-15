@@ -36,8 +36,11 @@ class RandomPeopleViewModel(
         }
     }
 
-    fun addAsFriend(position: Int, uuid: String) = viewModelScope.launch(Dispatchers.IO) {
-        people[position] = people[position].copy(isFavorite = !people[position].isFavorite)
+    fun addAsFriend(position: Int, uuid: String, strictlyAdd: Boolean = false) = viewModelScope.launch(Dispatchers.IO) {
+        if (strictlyAdd)
+            people[position] = people[position].copy(isFavorite = true)
+        else
+            people[position] = people[position].copy(isFavorite = !people[position].isFavorite)
         addOrRemoveFriendUseCase(people[position].map(), uuid, people[position].isFavorite)
         _uiState.value = RandomPeopleUiState(items = people.toList(), msg = null, isLoading = false)
     }

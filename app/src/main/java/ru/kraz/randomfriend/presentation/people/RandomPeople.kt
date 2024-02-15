@@ -40,7 +40,7 @@ fun RandomPeople(
     LazyColumn {
         if (people.items.isNotEmpty()) {
             itemsIndexed(people.items) { index, it ->
-                RandomPerson(it, index)
+                RandomPerson(navController, it, index)
             }
         }
     }

@@ -44,12 +44,15 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import org.koin.androidx.compose.koinViewModel
 import ru.kraz.randomfriend.R
+import ru.kraz.randomfriend.presentation.common.Screen
 
 @Composable
 fun RandomPerson(
+    navController: NavController,
     it: RandomPersonUi,
     index: Int,
     randomPeopleViewModel: RandomPeopleViewModel = koinViewModel()
@@ -115,7 +118,16 @@ fun RandomPerson(
                     Image(
                         modifier = Modifier
                             .wrapContentSize()
-                            .padding(horizontal = 10.dp),
+                            .padding(horizontal = 10.dp)
+                            .clickable(
+                                interactionSource = interactionSource,
+                                indication = null
+                            ) {
+                                val sharedPreferences = context.getSharedPreferences("settings", Context.MODE_PRIVATE)
+                                val uuid = sharedPreferences.getString("UUID", "") ?: ""
+                                randomPeopleViewModel.addAsFriend(index, uuid, true)
+                                navController.navigate(Screen.Chat.route+"/${it.id}")
+                            },
                         imageVector = Icons.AutoMirrored.Filled.Send,
                         contentDescription = null
                     )
